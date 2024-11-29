@@ -51,7 +51,8 @@ class AccountHoler(User):
 
   def get_loan(self, loan):
     if self.getLoanTimes>=2:
-      return "You already got loan two times!!"
+      print("You already got loan two times!!")
+      return
     self.balance += loan
     self.getLoanTimes += 1
     print("You have got loan successfully!!")
@@ -81,9 +82,9 @@ class Admin:
     if len(bank_name.accountHolders) == 0:
       print("No user to show!")
       return
-    print("ID\tName\tBalance")
+    print("ID\tName\t\tBalance")
     for it in bank_name.accountHolders.values():
-      print(f"{it.account_id}\t{it.name}\t{it.balance}")
+      print(f"{it.account_id}\t{it.name}\t\t{it.balance}")
 
   def total_available_balance(self, bank_name):
     total_balance = sum(account.balance for account in bank_name.accountHolders.values())

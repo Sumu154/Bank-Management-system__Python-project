@@ -13,13 +13,13 @@ def main():
     print("2. Account Holder Panel")
     print("3. Exit")
 
-    choice = input("Enter your choice: ")
+    choice = int(input("Enter your choice: "))
 
-    if choice == "1":
+    if choice == 1:
         admin_panel(bank, admin)
-    elif choice == "2":
+    elif choice == 2:
         account_holder_panel(bank)
-    elif choice == "3":
+    elif choice == 3:
         print("Thank you for using the Bank Management System!")
         break
     else:
@@ -38,27 +38,27 @@ def admin_panel(bank, admin):
     print("6. Toggle Loan Feature")
     print("7. Back to Main Menu")
 
-    choice = input("Enter your choice: ")
+    choice = int(input("Enter your choice: "))
 
-    if choice == "1":
+    if choice == 1:
       name = input("Enter account holder's name: ")
       phone = input("Enter phone number: ")
       email = input("Enter email: ")
       address = input("Enter address: ")
       acc_type = input("Enter account type (savings/current): ")
       admin.create_account(bank, name, phone, email, address, acc_type)
-    elif choice == "2":
+    elif choice == 2:
       account_id = int(input("Enter account ID to delete: "))
       admin.delete_account(bank, account_id)
-    elif choice == "3":
+    elif choice == 3:
       admin.view_all_accounts(bank)
-    elif choice == "4":
+    elif choice == 4:
       admin.total_available_balance(bank)
-    elif choice == "5":
+    elif choice == 5:
       admin.total_loan_amount(bank)
-    elif choice == "6":
+    elif choice == 6:
       admin.toggle_loan_feature()
-    elif choice == "7":
+    elif choice == 7:
       break
     else:
       print("Invalid choice. Please try again.")
@@ -83,31 +83,31 @@ def account_holder_panel(bank):
     print("6. View Transaction History")
     print("7. Back to Main Menu")
 
-    choice = input("Enter your choice: ")
+    choice = int(input("Enter your choice: "))
 
-    if choice == "1":
+    if choice == 1:
       print(f"Your current balance is: {account.get_balance()}")
-    elif choice == "2":
+    elif choice == 2:
       amount = float(input("Enter deposit amount: "))
       account.deposit_balance(amount)
-    elif choice == "3":
+    elif choice == 3:
       amount = float(input("Enter withdrawal amount: "))
       account.withdraw_balance(amount)
-    elif choice == "4":
+    elif choice == 4:
       if bank.loan_feature_on:
         loan = float(input("Enter loan amount: "))
         account.get_loan(loan)
       else:
         print("Loan feature is currently turned off.")
-    elif choice == "5":
+    elif choice == 5:
       receiver_id = int(input("Enter recipient's Account ID: "))
       amount = float(input("Enter transfer amount: "))
       bank.transfer_amount(account.account_id, receiver_id, amount)
-    elif choice == "6":
+    elif choice == 6:
       print("\nTransaction History:")
       for it in account.trans_history:
         print(it)
-    elif choice == "7":
+    elif choice == 7:
       break
     else:
       print("Invalid choice. Please try again.")
