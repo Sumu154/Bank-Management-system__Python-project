@@ -1,5 +1,6 @@
 from abc import ABC    # abstract base class
 from transaction import Transaction
+from bank import Bank
 
 
 class User(ABC):
@@ -20,7 +21,9 @@ class AccountHoler(User):
     self.account_id = AccountHoler._id  # Assign the current _id to account_id
     AccountHoler._id += 1  # Increment the class-level _id
     self.getLoanTimes = 0
+    self.bank = Bank('b1')
     self.trans_history = []
+    self.loan_amounts = []
     
     
 
@@ -28,6 +31,9 @@ class AccountHoler(User):
     return self.balance
 
   def withdraw_balance(self, withdraw):
+    if self.bank.isBankrupt:  # Access the bank's isBankrupt attribute through self.bank
+      print("The bank is bankrupt.")
+      return
     if withdraw > self.balance:  # Check if withdrawal amount exceeds balance
       print("Withdrawal amount exceeded")
       return
@@ -50,12 +56,19 @@ class AccountHoler(User):
     print("deposit balance successfully!!")
 
   def get_loan(self, loan):
-    if self.getLoanTimes>=2:
-      print("You already got loan two times!!")
+    if not self.bank.loan_feature_on:  # Check if loan feature is ON in the bank
+      print("Loan feature is currently disabled by the bank.")
       return
-    self.balance += loan
-    self.getLoanTimes += 1
-    print("You have got loan successfully!!")
+    if self.getLoanTimes >= 2:
+      print("You have already received a loan two times!")
+      return
+    
+    self.balance += loan  
+    self.getLoanTimes += 1 
+    self.loan_amounts.append(loan)
+    transaction = Transaction('Loan', loan, self.balance)
+    self.trans_history.append(transaction)
+    print(f"You have received a loan of {loan} successfully!")
 
 
 
@@ -92,8 +105,8 @@ class Admin:
     return total_balance
 
   def total_loan_amount(self, bank_name):
-    total_loan = sum(account.getLoanTimes * 3000 for account in bank_name.accountHolders.values())  # Assuming 3000 per loan
-    print(f"Total loan amount given by the bank_name: {total_loan}")
+    total_loan = sum(sum(account.loan_amounts) for account in bank_name.accountHolders.values())
+    print(f"Total loan amount given by {bank_name.name}: {total_loan}")
     return total_loan
 
   def toggle_loan_feature(self):

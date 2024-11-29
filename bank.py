@@ -1,5 +1,4 @@
 from transaction import Transaction
-from user import User, AccountHoler, Admin
 
 class Bank:
   _id = 1
@@ -7,8 +6,12 @@ class Bank:
   def __init__(self, name) -> None:
       self.name = name
       Bank._id += 1
+      self.isBankrupt = False
       self.loan_feature_on = True
       self.accountHolders = {}
+
+  def is_bankrupt(self):
+      return self.isBankrupt
 
   def add_account(self, account):
       self.accountHolders[account.account_id] = account
