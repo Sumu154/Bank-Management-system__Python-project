@@ -1,1 +1,1 @@
-name, phone, email, address, acc_type
+transfer_amount
