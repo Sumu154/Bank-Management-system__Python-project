@@ -48,11 +48,9 @@ This is a simple Python-based **Bank Management System** designed to simulate th
 ---
 
 **Users can deposit and withdraw money:** 
-- **Deposit Money:**  
-  ![Deposit](./assets/3.2.png)
+![Deposit](./assets/3.2.png)
   
-- **Withdraw Money:**
-  ![Withdraw](./assets/4.1.png)
+![Withdraw](./assets/4.1.png)
 
 ---
 
