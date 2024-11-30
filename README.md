@@ -22,7 +22,8 @@ This is a simple Python-based Bank Management System designed to simulate the co
 
 ## Running Step by Step
 The very first interface,,first choose admin to create account for users
-![Step 1](./asset/1.png "Launching the Application")
+![Step 1](./assets/1.png "Launching the Application")
+![alt](https://)
 
 ### Step 2: Admin Panel
 ![Step 2](./asset/2.png "Accessing the Admin Panel")
