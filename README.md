@@ -25,18 +25,19 @@ admin view all account holders
 
 
 Then the user can access their account
-![Step 2](./assets/2.2.png")
+![Step 2](./assets/2.2.png)
 
 user can check their available money
-![Step 2](./assets/3.1.png")
+![Step 2](./assets/3.1.png)
 
 User can deposit and withdraw money
-![Step 2](./assets/3.2.png") 
+![Step 2](./assets/3.2.png) 
 ![Step 1](./assets/4.1.png)
 ![Step 1](./assets/4.3.png)
 
 user can get loan but at most 2 times 
 ![Step 1](./assets/4.4.png)
+
 ![Step 1](./assets/5.1.png)
 
 Can transfer money to any other account
